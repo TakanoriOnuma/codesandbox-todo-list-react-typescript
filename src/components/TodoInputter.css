@@ -1,0 +1,9 @@
+.todo-inputter {
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+}
+
+.todo-inputter__input-item + .todo-inputter__input-item {
+  margin-top: 10px;
+}

@@ -1,0 +1,73 @@
+.todo-list {
+  margin-top: 15px;
+  padding: 10px;
+  border-radius: 5px;
+  border: solid 1px #ccc;
+}
+
+.todo-list__title {
+  text-align: center;
+}
+
+.todo {
+  border: solid 1px #ccc;
+  padding: 10px;
+  background-color: #fff;
+  margin-top: 10px;
+}
+/* flipアニメーション時の位置が先頭を削除するときにmarginの値が変わってしまうため、全部同じmarginにする
+.todo + .todo {
+  margin-top: 10px;
+} */
+
+.todo__line {
+  display: flex;
+  justify-content: space-between;
+}
+
+.todo__status {
+  width: 60px;
+  padding: 5px;
+  line-height: 1;
+  border-radius: 5px;
+  background-color: #ccf;
+  border: solid 1px #aaf;
+  flex: 0 0 auto;
+  transition: background-color 0.5s;
+}
+
+.todo--done .todo__status {
+  background-color: #eee;
+  border-color: #ccc;
+}
+
+.todo__deadline {
+  flex: 1 1 auto;
+  padding-right: 10px;
+  text-align: right;
+}
+
+.todo__delete {
+  position: relative;
+  width: 30px;
+  flex: 0 0 auto;
+}
+.todo__delete::before, .todo__delete::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 70%;
+  height: 2px;
+  background-color: #ccc;
+  content: ''
+}
+.todo__delete::before {
+  transform: translate3d(-50%, -50%, 0) rotate(45deg);
+}
+.todo__delete::after {
+  transform: translate3d(-50%, -50%, 0) rotate(135deg);
+}
+
+.todo__text {
+  margin-top: 5px;
+}

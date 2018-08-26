@@ -58,17 +58,13 @@ export default class App extends React.Component<Props, State> {
     this.state = {
       todoList: INITIAL_TODO_LIST
     };
-
-    this.onSubmitTodo = this.onSubmitTodo.bind(this);
-    this.onTodoStatusChange = this.onTodoStatusChange.bind(this);
-    this.onTodoDelete = this.onTodoDelete.bind(this);
   }
 
   /**
    * TODOの登録
    * @param todo - todo情報
    */
-  onSubmitTodo(todo: { text: string, deadline: Date }) {
+  onSubmitTodo = (todo: { text: string, deadline: Date }) => {
     const newTodo: Todo = {
       ...todo,
       id: uuid(),
@@ -84,7 +80,7 @@ export default class App extends React.Component<Props, State> {
    * TODOステータスの切り替え
    * @param todoId - TODO ID
    */
-  onTodoStatusChange(todoId: string) {
+  onTodoStatusChange = (todoId: string) => {
     const { todoList } = this.state;
     const index = findIndex(todoList, (todo) => todo.id === todoId);
 
@@ -107,7 +103,7 @@ export default class App extends React.Component<Props, State> {
    * TODOの削除
    * @param todoId - TODO ID
    */
-  onTodoDelete(todoId: string) {
+  onTodoDelete = (todoId: string) => {
     const { todoList } = this.state;
     this.setState({
       todoList: todoList.filter((todo) => todo.id !== todoId)

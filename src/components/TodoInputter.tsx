@@ -18,14 +18,12 @@ export default class TodoInputter extends React.Component<Props, State> {
       todoText: '',
       deadline: ''
     };
-
-    this.onSubmit = this.onSubmit.bind(this);
   }
 
   /**
    * 送信
    */
-  onSubmit(e: any) {
+  onSubmit = (e: any) => {
     e.preventDefault();
 
     const { todoText, deadline } = this.state;

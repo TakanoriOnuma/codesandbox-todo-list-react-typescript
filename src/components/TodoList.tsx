@@ -52,6 +52,7 @@ export default class TodoList extends React.Component<Props, State> {
       isApperAnimationFinish: false // 最初のアニメーションを終了したか
     };
   }
+
   render() {
     const { isApperAnimationFinish } = this.state;
     const { todoList } = this.props;

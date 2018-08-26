@@ -4,7 +4,6 @@
   "private": true,
   "main": "src/index.tsx",
   "dependencies": {
-    "@types/react-flip-move": "2.9.12",
     "@types/uuid": "3.4.3",
     "classnames": "2.2.6",
     "lodash": "4.17.10",

@@ -7,10 +7,10 @@ import './TodoList.css';
 
 /**
  * 日付をフォーマットする
- * @param {Date} date - Dateインスタンス
- * @returns {string} - フォーマットされた文字列
+ * @param date - Dateインスタンス
+ * @returns フォーマットされた文字列
  */
-function formatDate(date) {
+function formatDate(date: Date): string {
   const year = date.getFullYear();
   const month = ('00' + (date.getMonth() + 1)).slice(-2);
   const day = ('00' + date.getDate()).slice(-2);
@@ -18,31 +18,31 @@ function formatDate(date) {
 }
 
 // アニメーションの設定
-const enterAnimation = {
+const enterAnimation: FlipMove.Animation = {
   from: {
-    opacity: 0,
+    opacity: '0',
     transform: 'translate3d(0, -30px, 0)'
   },
   to: {
-    opacity: 1,
+    opacity: '1',
     transform: 'translate3d(0, 0, 0)'
   }
 };
-const leaveAnimation = {
+const leaveAnimation: FlipMove.Animation = {
   from: {},
   to: {
-    opacity: 0,
+    opacity: '0',
     transform: 'translate3d(0, -30px, 0)'
   }
-}
+};
 
 interface Props {
-  todoList: Array<any>,
-  onStatusChange: (todoId: string) => void,
-  onDelete: (todoId: string) => void
+  todoList: Array<any>;
+  onStatusChange: (todoId: string) => void;
+  onDelete: (todoId: string) => void;
 }
 interface State {
-  isAppearAnimationFinish: boolean
+  isApperAnimationFinish: boolean;
 }
 export default class TodoList extends React.Component<Props, State> {
   constructor(props: Props) {

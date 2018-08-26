@@ -4,14 +4,14 @@ import * as React from 'react';
 import './TodoInputter.css';
 
 interface Props {
-  onSubmitTodo: (todo: { text: string, deadline: Date }) => void
+  onSubmitTodo: (todo: { text: string, deadline: Date }) => void;
 }
 interface State {
-  todoText: string,
-  deadline: string
+  todoText: string;
+  deadline: string;
 }
 export default class TodoInputter extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -25,7 +25,7 @@ export default class TodoInputter extends React.Component<Props, State> {
   /**
    * 送信
    */
-  onSubmit(e) {
+  onSubmit(e: any) {
     e.preventDefault();
 
     const { todoText, deadline } = this.state;

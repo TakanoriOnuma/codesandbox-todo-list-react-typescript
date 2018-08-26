@@ -5,8 +5,15 @@ import { findIndex } from 'lodash';
 import TodoInputter from './components/TodoInputter';
 import TodoList from './components/TodoList';
 
+interface Todo {
+  id: string;
+  isDone: boolean;
+  text: string;
+  deadline: Date;
+}
+
 // TODOリストの初期値
-const INITIAL_TODO_LIST = [
+const INITIAL_TODO_LIST: Array<Todo> = [
   {
     id: uuid(),
     isDone: true,
@@ -42,10 +49,10 @@ const INITIAL_TODO_LIST = [
 interface Props {
 }
 interface State {
-  todoList: array<any>
+  todoList: Array<Todo>;
 }
 export default class App extends React.Component<Props, State> {
-  constructor(props) {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -59,10 +66,10 @@ export default class App extends React.Component<Props, State> {
 
   /**
    * TODOの登録
-   * @param {{ text: string, deadline: Date}} todo - todo情報
+   * @param todo - todo情報
    */
-  onSubmitTodo(todo) {
-    const newTodo = {
+  onSubmitTodo(todo: { text: string, deadline: Date }) {
+    const newTodo: Todo = {
       ...todo,
       id: uuid(),
       isDone: false
@@ -75,11 +82,11 @@ export default class App extends React.Component<Props, State> {
 
   /**
    * TODOステータスの切り替え
-   * @param {string} todoId - TODO ID
+   * @param todoId - TODO ID
    */
-  onTodoStatusChange(todoId) {
+  onTodoStatusChange(todoId: string) {
     const { todoList } = this.state;
-    const index = findIndex(todoList, { id: todoId });
+    const index = findIndex(todoList, (todo) => todo.id === todoId);
 
     if (index === -1) {
       return;
@@ -98,9 +105,9 @@ export default class App extends React.Component<Props, State> {
 
   /**
    * TODOの削除
-   * @param {string} todoId - TODO ID
+   * @param todoId - TODO ID
    */
-  onTodoDelete(todoId) {
+  onTodoDelete(todoId: string) {
     const { todoList } = this.state;
     this.setState({
       todoList: todoList.filter((todo) => todo.id !== todoId)
@@ -123,11 +130,3 @@ export default class App extends React.Component<Props, State> {
     );
   }
 }
-
-/**
-        <TodoList
-          todoList={todoList}
-          onStatusChange={this.onTodoStatusChange}
-          onDelete={this.onTodoDelete}
-        />
- */
